@@ -12,7 +12,7 @@ def bdd_connect():
 
 def bdd_get_p_from_cp(id_checkpoint):
     connection = bdd_connect()
-    sql_select_query = """select presence_id_person from "Presence" where presence_id_checkpoint = %s"""
+    sql_select_query = """select presence_id_person from "presence" where presence_id_checkpoint = %s"""
     cursor = connection.cursor()
     cursor.execute(sql_select_query, (id_checkpoint,))
     result = []
@@ -27,7 +27,7 @@ def bdd_insert_presence(update_time, id_checkpoint):
     cursor = connection.cursor()
     for i in update_time:
         date = update_time[i]
-        cursor.execute("""update "Presence" set presence_check_time = %s where presence_id_person = %s and presence_id_checkpoint = %s""",(update_time[i],i,str(1)))
+        cursor.execute("""update "presence" set presence_check_time = %s where presence_id_person = %s and presence_id_checkpoint = %s""",(update_time[i],i,str(1)))
     cursor.close()
     connection.commit()
     connection.close()
