@@ -17,10 +17,11 @@ known_face_names = simplejson.load(f)
 
 known_face_encodings = np.loadtxt('known_face_encodings.txt')
 
+id_checkpoint = 3
 face_locations = []
 face_encodings = []
 face_names = []
-concerned_faces = bdd_access.bdd_get_p_from_cp(1)
+concerned_faces = bdd_access.bdd_get_p_from_cp(id_checkpoint)
 update_time = {}
 process_this_frame = True
 
@@ -85,7 +86,7 @@ while True:
 
     # Hit 'q' on the keyboard to quit!
     if cv2.waitKey(1) & 0xFF == ord('q'):
-        bdd_access.bdd_insert_presence(update_time,1)
+        bdd_access.bdd_insert_presence(update_time,id_checkpoint)
         break
 
 # Release handle to the webcam

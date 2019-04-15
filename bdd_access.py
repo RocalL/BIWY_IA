@@ -27,7 +27,7 @@ def bdd_insert_presence(update_time, id_checkpoint):
     cursor = connection.cursor()
     for i in update_time:
         date = update_time[i]
-        cursor.execute("""update "presence" set presence_check_time = %s where presence_id_person = %s and presence_id_checkpoint = %s""",(update_time[i],i,str(1)))
+        cursor.execute("""update "presence" set presence_check_time = %s where presence_id_person = %s and presence_id_checkpoint = %s""",(update_time[i],i,str(id_checkpoint)))
     cursor.close()
     connection.commit()
     connection.close()
